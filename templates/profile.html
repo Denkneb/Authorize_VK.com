@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2" lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Authorize VK.com - профиль пользователя</title>
+
+    <link href="{% static 'css/all.css' %}" rel="stylesheet">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Wrapper required for sidebar transitions -->
+<div class="st-container">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#sidebar-menu" data-effect="st-effect-1" data-toggle="sidebar-menu"
+                   class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1"
+                   class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a>
+                <a class="navbar-brand navbar-brand-primary hidden-xs" href="index.html">Authorize VK.com </a>
+            </div>
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="nav navbar-nav hidden-xs">
+                    <!-- messages -->
+                    <li class="dropdown notifications hidden-xs hidden-sm">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope-o"></i>
+
+                        </a>
+                        {#                        <ul class="dropdown-menu">#}
+                        {#                            <li class="media">#}
+                        {#                                <div class="media-left">#}
+                        {#                                    <a href="#">#}
+                        {#                                        <img class="media-object thumb" src="../static/images/people/50/guy-2.jpg"#}
+                        {#                                             alt="people">#}
+                        {#                                    </a>#}
+                        {#                                </div>#}
+                        {#                                <div class="media-body">#}
+                        {#                                    <div class="pull-right">#}
+                        {#                                        <span class="label label-default">5 min</span>#}
+                        {#                                    </div>#}
+                        {#                                    <h5 class="media-heading">Adrian D.</h5>#}
+                        {##}
+                        {#                                    <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
+                        {#                                </div>#}
+                        {#                            </li>#}
+                        {#                        </ul>#}
+                    </li>
+                    <!-- // END messages -->
+                </ul>
+
+                <ul class="nav navbar-nav navbar-user">
+                    <!-- User -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ user.photo_200 }}" width="35" alt="Bill" class="img-circle"/>
+                            {{ user.first_name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Профиль</a></li>
+                            <li><a href="#">Сообщения</a></li>
+                            <li><a href="#">Выход</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="navbar-form margin-none navbar-left hidden-xs ">
+                    <!-- Search -->
+                    <div class="search-1">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="icon-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Поиск друзей">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+    <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark"
+         id="sidebar-menu" data-type="collapse">
+        <div data-scrollable>
+            <ul class="sidebar-menu">
+                <li class="category">Навигация</li>
+                <li class=" active "><a href="\profile/"><i class="icon-user-1"></i> <span>Профиль</span></a></li>
+                <li class=""><a href="#"><i class="fa fa-group"></i> <span>Пользователи</span></a></li>
+                <li class=""><a href="#"><i class="icon-comment-fill-1"></i> <span>Сообщения</span></a></li>
+                <li><a href="\"><i class="icon-lock-fill"></i> <span>Авторизация</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- content push wrapper -->
+    <div class="st-pusher" id="content">
+
+        <!-- this is the wrapper for the content -->
+        <div class="st-content">
+
+            <!-- extra div for emulating position:fixed of the menu -->
+            <div class="st-content-inner">
+
+                <div class="container-fluid">
+
+                    <div class="media media-grid media-clearfix-xs">
+                        <div class="media-left">
+
+                            <div class="width-250 width-auto-xs">
+                                <div class="panel panel-default widget-user-1 text-center">
+                                    <div class="avatar">
+                                        <img src="{{ user.photo_200 }}" alt="" class="img-circle">
+                                        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                                        <a href="https://vk.com/id{{ user.id }}" class="btn btn-success">В друзья <i
+                                                class="fa fa-check-circle fa-fw"></i></a>
+                                    </div>
+                                    <div class="profile-icons margin-none">
+                                        <span><i class="fa fa-users"></i>{{ user.users_count }}</span>
+                                        {#                                        <span><i class="fa fa-photo"></i> 43</span>#}
+                                    </div>
+                                    {#                                    <div class="panel-body">#}
+                                    {#                                        <div class="expandable expandable-indicator-white expandable-trigger">#}
+                                    {#                                            <div class="expandable-content">#}
+                                    {#                                                <p>Hi! I'm Adrian the Senior UI Designer at#}
+                                    {#                                                    <strong>MOSAICPRO</strong>. We hope you enjoy the design and quality#}
+                                    {#                                                    of Social.</p>#}
+                                    {#                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem#}
+                                    {#                                                    delectus dolorum necessitatibus neque odio quam quas qui quod#}
+                                    {#                                                    soluta? Aliquid eius esse minima.</p>#}
+                                    {#                                            </div>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="panel panel-default share">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-primary" href="#"><i class="fa fa-envelope"></i> Отправить</a>
+                                    </div>
+                                    <input type="text" class="form-control share-text"
+                                           placeholder="Написать сообщение..."/>
+                                </div>
+                            </div>
+
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#home" data-toggle="tab"><i
+                                            class="fa fa-fw fa-picture-o"></i> Фото</a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active in" id="home">
+                                        <img src="../static/images/place1.jpg" alt="image"/>
+                                        <img src="../static/images/place2.jpg" alt="image"/>
+                                        <img src="../static/images/food1.jpg" alt="image"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading panel-heading-gray">
+                                            <a href="#" class="btn btn-white btn-xs pull-right">
+                                                <i class="fa fa-pencil"></i></a>
+                                            <i class="fa fa-fw fa-info-circle"></i> Обо мне
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul class="list-unstyled profile-about margin-none">
+                                                <li class="padding-v-5">
+                                                    <div class="row">
+                                                        <div class="col-sm-4"><span
+                                                                class="text-muted">Дата рождения</span></div>
+                                                        <div class="col-sm-8">{{ user.bdate }}</div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="padding-v-5">
+                                                    <div class="row">
+                                                        <div class="col-sm-4"><span class="text-muted">Живу</span>
+                                                        </div>
+                                                        <div class="col-sm-8">{{ user.country }}, {{ user.city }}</div>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading panel-heading-gray">
+                                            <div class="pull-right">
+                                                <a href="#" class="btn btn-primary btn-xs">Add <i
+                                                        class="fa fa-plus"></i></a>
+                                            </div>
+                                            <i class="icon-user-1"></i> Друзья
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul class="img-grid">
+                                                {% for key, value in users.items %}
+                                                    <li>
+                                                        <a href="https://vk.com/id{{ value.id }}">
+                                                            <img src="{{ value.photo_50 }}"
+                                                                 alt="{{ value.first_name }} {{ value.last_name }}"/>
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /st-content-inner -->
+
+        </div>
+        <!-- /st-content -->
+
+    </div>
+    <!-- /st-pusher -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <strong>Authorize VK.com</strong> &copy; {% now 'Y' %}
+    </footer>
+    <!-- // Footer -->
+
+</div>
+<!-- /st-container -->
+
+<!-- Inline Script for colors and config objects; used by various external scripts; -->
+<script>
+    var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#81b53e",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+    };
+    var config = {
+        theme: "social-1",
+        skins: {
+            "default": {
+                "primary-color": "#16ae9f"
+            },
+            "orange": {
+                "primary-color": "#e74c3c"
+            },
+            "blue": {
+                "primary-color": "#4687ce"
+            },
+            "purple": {
+                "primary-color": "#af86b9"
+            },
+            "brown": {
+                "primary-color": "#c3a961"
+            }
+        }
+    };
+</script>
+
+<script src="{% static 'js/all.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+</body>
+
+</html>

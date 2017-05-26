@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="hide-sidebar ls-bottom-footer" lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Authorize VK.com</title>
+
+    <link href="{% static 'css/all.css' %}" rel="stylesheet">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="login">
+
+<div id="content">
+    <div class="container-fluid">
+
+        <div class="lock-container">
+            <h1>Вход в аккаунт</h1>
+            <div class="panel panel-default text-center">
+                <img src="../static/images/user.jpg" class="img-circle">
+                <div class="panel-body">
+                    <a href="/authorize/" class="btn btn-primary">Авторизоваться <i class="fa fa-fw fa-unlock-alt"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <strong>Authorize VK.com</strong> &copy; Copyright {% now "Y" %}
+</footer>
+<!-- // Footer -->
+
+{#<script src="{% static 'js/all.js' %}"></script>#}
+{#<script src="{% static 'js/app.js' %}"></script>#}
+
+</body>
+
+</html>
