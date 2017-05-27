@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 
 
 # https://vk.com/dev
-VK_CLIENT_ID = '6043918'
-VK_CLIENT_SECRET = 'dVWjoKT3W2taZ1AoS6dH'
+VK_CLIENT_ID = ''
+VK_CLIENT_SECRET = ''
 # https://vk.com/dev/access_token
 REDIRECT_URL = 'http://127.0.0.1:8005/authorize/'
 
