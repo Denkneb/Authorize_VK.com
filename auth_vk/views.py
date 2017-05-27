@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 
 
 # https://vk.com/dev
-VK_CLIENT_ID = ''
-VK_CLIENT_SECRET = ''
+VK_CLIENT_ID = '6043918'
+VK_CLIENT_SECRET = 'dVWjoKT3W2taZ1AoS6dH'
 # https://vk.com/dev/access_token
 REDIRECT_URL = 'http://127.0.0.1:8005/authorize/'
 
@@ -23,8 +23,6 @@ def viewLogin(request):
 def authorizeVK(request):
     result = None
     if not request.GET:
-        # try:
-        #     if not request.GET:
         # Open new tab, get code for getting access_token
         # example answer server vk.com: REDIRECT_URI?code=41b93f4831f1466548
         # user will have to authorize in and allow the application
