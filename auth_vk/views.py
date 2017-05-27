@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 
 
 # https://vk.com/dev
-VK_CLIENT_ID = ''
-VK_CLIENT_SECRET = ''
+VK_CLIENT_ID = '6043918'
+VK_CLIENT_SECRET = 'dVWjoKT3W2taZ1AoS6dH'
 # https://vk.com/dev/access_token
 REDIRECT_URL = 'http://127.0.0.1:8005/authorize/'
 
@@ -32,7 +32,7 @@ def authorizeVK(request):
                           'client_id=' + VK_CLIENT_ID +
                           '&display=mobile'
                           '&redirect_uri=' + REDIRECT_URL +
-                          '&scope=friends'
+                          '&scope=friends,offline'
                           '&response_type=code'
                           '&v=5.64')
     elif 'error' not in request.GET:
@@ -48,9 +48,6 @@ def authorizeVK(request):
                                                             '&client_secret=' + VK_CLIENT_SECRET +
                                                             '&redirect_uri=' + REDIRECT_URL +
                                                             '&code=' + code).json()
-        # Set the time of the session. Is equal to the duration of the application access_token.
-        request.session.set_expiry(request.session['access_token_user']['expires_in'])
-
         result = redirect('/profile/')
     else:
         result = redirect('/')
